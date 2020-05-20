@@ -48,4 +48,4 @@ namespace API
                 });
     }
 }
-//39. Introduction to MediatR
+//39. Introduction to MediPatR
