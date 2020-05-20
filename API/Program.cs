@@ -48,4 +48,4 @@ namespace API
                 });
     }
 }
-//command and queries
+//39. Introduction to MediatR
