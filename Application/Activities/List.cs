@@ -30,5 +30,7 @@ namespace Application.Activities
                 return activities;
             }
         }
+
+        //
     }
 }
