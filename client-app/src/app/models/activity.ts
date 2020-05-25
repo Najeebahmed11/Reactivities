@@ -6,5 +6,6 @@ export interface IActivity
     date:Date;
     city:string;
     venue:string;
+    category:string
 
 }
