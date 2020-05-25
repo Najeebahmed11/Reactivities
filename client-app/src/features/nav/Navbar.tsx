@@ -8,7 +8,6 @@ export const Navbar = () => {
         <Menu.Item header>
           <img src="/assets/logo.png" alt="logo" />
           Reactivities
-
         </Menu.Item>
         <Menu.Item name="Activities" />
         <Menu.Item>
