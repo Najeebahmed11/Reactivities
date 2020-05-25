@@ -10,7 +10,7 @@ const App =()=> {
   useEffect(()=>{
     //componentDidMount() {
     axios
-      .get<IActivity[]>('http://locolhost:5000/api/activities')
+      .get<IActivity[]>('http://localhost:5000/api/activities')
       .then((response)=>{
       //console.log(response);
         setActivities(response.data)
