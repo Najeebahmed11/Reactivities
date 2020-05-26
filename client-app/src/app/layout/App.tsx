@@ -9,9 +9,11 @@ import { ActivityDashboard } from '../../features/nav/activities/dashboard/Activ
 const App =()=> {
   const [activities,setActivities]=useState<IActivity[]>([]);
   const[selectedActivity,setSelectedActivity]=useState<IActivity | null>(null);
+  const [editMode, setEditMode] = useState(false);
+
   const handleSelectActivity = (id : string )=>{
-    setSelectedActivity(activities.filter(a=>a.id===id)[0])
-  }
+    setSelectedActivity(activities.filter(a=>a.id===id)[0]);
+  };
   useEffect(()=>{
     //componentDidMount() {
     axios
@@ -30,6 +32,8 @@ const App =()=> {
          activities={activities}
          selectActivity={handleSelectActivity}
          selectedActivity={selectedActivity}
+         editMode={editMode}
+         setEditMode={setEditMode}
          />
       </Container>
     </Fragment>
