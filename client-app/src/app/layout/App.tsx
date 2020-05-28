@@ -13,6 +13,7 @@ const App =()=> {
 
   const handleSelectActivity = (id : string )=>{
     setSelectedActivity(activities.filter(a=>a.id===id)[0]);
+    setEditMode(false);
   };
 const handleOpenCreateForm = ()=>{
   setSelectedActivity(null);
@@ -35,8 +36,13 @@ const handleEditActivity=(activity : IActivity) =>{
     axios
       .get<IActivity[]>('http://localhost:5000/api/activities')
       .then((response)=>{
+        let activities : IActivity[]=[];
+        response.data.forEach(activity=>{
+          activity.date=activity.date.split('.')[0];
+          activities.push(activity);
+        })
       //console.log(response);
-        setActivities(response.data)
+        setActivities(activities);
       });
   });
 
