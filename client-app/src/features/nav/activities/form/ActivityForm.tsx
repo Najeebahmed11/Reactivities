@@ -7,9 +7,10 @@ interface IProps{
     activity : IActivity;
     createActivity : (activity:IActivity) => void;
     editActivity : (activity : IActivity) =>void;
+    submitting: boolean
 }
 
-export const ActivityForm : React.FC<IProps> = ({setEditMode,activity : initialFormState,createActivity,editActivity}) => {
+export const ActivityForm : React.FC<IProps> = ({setEditMode,activity : initialFormState,createActivity,editActivity,submitting}) => {
 
     const initializeForm = ()=>{
         if(initialFormState){
