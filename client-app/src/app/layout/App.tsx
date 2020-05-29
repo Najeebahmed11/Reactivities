@@ -35,7 +35,7 @@ const handleDeleteActivity = (id:string)=>{
   
 }
   useEffect(()=>{
-    //componentDidMount() {
+    //componentDidMount() {xx
     axios
       .get<IActivity[]>('http://localhost:5000/api/activities')
       .then((response)=>{
