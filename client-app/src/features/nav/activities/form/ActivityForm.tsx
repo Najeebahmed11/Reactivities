@@ -60,3 +60,4 @@ export const ActivityForm : React.FC<IProps> = ({setEditMode,activity : initialF
         </Segment>
     )
 }
+//summary
