@@ -30,7 +30,10 @@ const handleEditActivity=(activity : IActivity) =>{
   setEditMode(false);
 }
 
-
+const handleDeleteActivity = (id:string)=>{
+  setActivities([...activities.filter(a => a.id !== id)])
+  
+}
   useEffect(()=>{
     //componentDidMount() {
     axios
@@ -59,6 +62,7 @@ const handleEditActivity=(activity : IActivity) =>{
          setSelectedActivity={setSelectedActivity}
          createActivity={handleCreateActivity}
          editActivity={handleEditActivity}
+         deleteActivity={handleDeleteActivity}
          />
       </Container>
     </Fragment>
