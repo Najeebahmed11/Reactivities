@@ -5,11 +5,13 @@ import { IActivity } from '../models/activity';
 import { Navbar } from '../../features/nav/Navbar';
 import { ActivityDashboard } from '../../features/nav/activities/dashboard/ActivityDashboard';
 import agent from '../api/agent';
+import { LoadingComponent } from './LoadingComponent';
 
 const App =()=> {
   const [activities,setActivities]=useState<IActivity[]>([]);
   const[selectedActivity,setSelectedActivity]=useState<IActivity | null>(null);
   const [editMode, setEditMode] = useState(false);
+  const [loading , setLoading]= useState(true);
 
   const handleSelectActivity = (id : string )=>{
     setSelectedActivity(activities.filter(a=>a.id===id)[0]);
@@ -44,7 +46,6 @@ const handleDeleteActivity = (id:string)=>{
   
 }
   useEffect(()=>{
-    //componentDidMount() {
     agent.Activities.list()
       .then((response)=>{
         let activities : IActivity[]=[];
@@ -54,9 +55,9 @@ const handleDeleteActivity = (id:string)=>{
         })
       //console.log(response);
         setActivities(activities);
-      });
-  });
-
+      }).then(() => setLoading(false));
+  },  []);
+if(loading) return <LoadingComponent content='Loading activities...'/>
   return (
     <Fragment >
       <Navbar openCreateForm={handleOpenCreateForm} />
