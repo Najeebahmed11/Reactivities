@@ -1,10 +1,10 @@
 import  React,{useState,useEffect, Fragment } from 'react';
 
 import { Container } from 'semantic-ui-react'
-import axios from 'axios'
 import { IActivity } from '../models/activity';
 import { Navbar } from '../../features/nav/Navbar';
 import { ActivityDashboard } from '../../features/nav/activities/dashboard/ActivityDashboard';
+import agent from '../api/agent';
 
 const App =()=> {
   const [activities,setActivities]=useState<IActivity[]>([]);
@@ -35,12 +35,11 @@ const handleDeleteActivity = (id:string)=>{
   
 }
   useEffect(()=>{
-    //componentDidMount() {xx
-    axios
-      .get<IActivity[]>('http://localhost:5000/api/activities')
+    //componentDidMount() {
+    agent.Activities.list()
       .then((response)=>{
         let activities : IActivity[]=[];
-        response.data.forEach(activity=>{
+        response.forEach((activity) => {
           activity.date=activity.date.split('.')[0];
           activities.push(activity);
         })
