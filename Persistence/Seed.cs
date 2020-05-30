@@ -110,3 +110,4 @@ namespace Persistence
         }
     }
 }
+//78. Summary of section 6
