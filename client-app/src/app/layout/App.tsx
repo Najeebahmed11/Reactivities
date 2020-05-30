@@ -1,4 +1,4 @@
-import  React,{useState,useEffect, Fragment, SyntheticEvent } from 'react';
+import  React,{useState,useEffect, Fragment, SyntheticEvent, useContext } from 'react';
 
 import { Container } from 'semantic-ui-react'
 import { IActivity } from '../models/activity';
@@ -6,8 +6,10 @@ import { Navbar } from '../../features/nav/Navbar';
 import { ActivityDashboard } from '../../features/nav/activities/dashboard/ActivityDashboard';
 import agent from '../api/agent';
 import { LoadingComponent } from './LoadingComponent';
+import ActivityStore from '../stores/activityStore';
 
 const App =()=> {
+  const activityStore = useContext(ActivityStore);
   const [activities,setActivities]=useState<IActivity[]>([]);
   const[selectedActivity,setSelectedActivity]=useState<IActivity | null>(null);
   const [editMode, setEditMode] = useState(false);
@@ -68,6 +70,7 @@ if(loading) return <LoadingComponent content='Loading activities...'/>
     <Fragment >
       <Navbar openCreateForm={handleOpenCreateForm} />
       <Container style ={{marginTop: '7em'}}>
+       
         <ActivityDashboard 
          activities={activities}
          selectActivity={handleSelectActivity}
