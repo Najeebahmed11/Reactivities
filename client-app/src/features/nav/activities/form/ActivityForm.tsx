@@ -11,7 +11,7 @@ interface IProps{
 }
 
 export const ActivityForm : React.FC<IProps> = ({setEditMode,activity : initialFormState,editActivity,submitting}) => {
-    const activityStore = useContext(activityStore);
+    const activityStore = useContext(ActivityStore);
     const {createActivity} = activityStore;
     const initializeForm = ()=>{
         if(initialFormState){
